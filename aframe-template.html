@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js" integrity="sha256-SNDsmWBFQwJAjxLymQu5Fqh6rW4RKLJXUQboy3O0BUA=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+
+	<a-scene>
+		{% for item in items %}
+		<a-sphere
+			color = 'rgb{{ item["color"] }}'
+			position = '{{ item["position"][1] }} {{ item["position"][2] }} {{ item["position"][0] }}'
+			radius = '{{ item["radius"] }}'
+			material = 'opacity: 1; shader: flat'
+		></a-sphere>
+		{% endfor %}
+
+		<a-sky color='#ccc'></a-sky>
+
+		<a-entity position="0 0 5" movement-controls="fly: true; speed: 0.3">
+		  <a-camera look-controls="pointerLockEnabled: true">
+		  </a-camera>
+		</a-entity>
+	</a-scene>
+
+</body>
+</html>
